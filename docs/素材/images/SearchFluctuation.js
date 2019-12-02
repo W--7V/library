@@ -5,31 +5,31 @@ var normal='slategray';   //color;
 var zindex=10000;         //z-index;
 var openTF=false;
 var width=165,height=window.document.body.offsetHeight-5;
-var left=0,top=0,title='ËÑË÷Ğ¡ÖúÀí';
+var left=0,top=0,title='æœç´¢å°åŠ©ç†';
 var SearchBodyStr=''
                    +'<table width="100%" border="0" cellspacing="0" cellpadding="0">'
 				   +'<form name="searchform" target="MainFrame" method="post">'
                    +'<tr> '
-                   +'<td height="25"><strong>°´ÏÂÃæÈÎÒâ»òÈ«²¿Ìõ¼ş½øĞĞËÑË÷</strong></td>'
+                   +'<td height="25"><strong>æŒ‰ä¸‹é¢ä»»æ„æˆ–å…¨éƒ¨æ¡ä»¶è¿›è¡Œæœç´¢</strong></td>'
                    +' </tr>'
-                   +'<tr><td height="25">È«²¿»ò²¿·Ö¹Ø¼ü×Ö</td></tr>'
+                   +'<tr><td height="25">å…¨éƒ¨æˆ–éƒ¨åˆ†å…³é”®å­—</td></tr>'
                    +'<tr><td height="25"><input style="width:95%" type="text" name="KeyWord"></td></tr>'
-                   +'  <tr><td height="25">ËÑË÷·¶Î§</td></tr>'
+                   +'  <tr><td height="25">æœç´¢èŒƒå›´</td></tr>'
                    +'  <tr><td height="25"> <select style="width:95%" name="SearchArea" onchange="SetSearchTypeOption(this.value)">'
                    +'     </select></td></tr>' 
-				   +'<tr><td height="25">ËÑË÷ÀàĞÍ</td></tr>'
+				   +'<tr><td height="25">æœç´¢ç±»å‹</td></tr>'
                    +'<tr><td height="25"><select style="width:95%" name="SearchType">'
                    +'</select></td></tr>'
-				   +'  <tr id="DateArea" onclick="setstatus(this)" style="cursor:hand"><td height="25"><strong>Ê²Ã´Ê±ºòĞŞ¸ÄµÄ?</strong></td></tr>'
-				   +'  <tr style="display:none"><td height="25">¿ªÊ¼ÈÕÆÚ<input type="text" readonly style="width:80%" name="StartDate" id="StartDate">'
-                   +'  <span style="cursor:hand" onClick=OpenThenSetValue("Include/DateDialog.asp",160,170,window,document.all.StartDate);document.all.StartDate.focus();><img src="Images/date.gif" width="20" height="20" border="0" align="absmiddle" title="Ñ¡ÔñÈÕÆÚ"></span></td></tr>'
-				   +'  <tr style="display:none"><td height="25">½áÊøÈÕÆÚ<input type="text" readonly style="width:80%" name="EndDate" id="EndDate">'
-                   +'  <span style="cursor:hand" onClick=OpenThenSetValue("Include/DateDialog.asp",160,170,window,document.all.EndDate);document.all.EndDate.focus();><img src="Images/date.gif" width="20" height="20" border="0" align="absmiddle" title="Ñ¡ÔñÈÕÆÚ"></span></td></tr>'
-                   +'  <tr><td height="40" align="center"><input type="submit" name="SearchButton" value="¿ªÊ¼ËÑË÷" onclick="return(SearchFormSubmit())"></td></tr>'
+				   +'  <tr id="DateArea" onclick="setstatus(this)" style="cursor:hand"><td height="25"><strong>ä»€ä¹ˆæ—¶å€™ä¿®æ”¹çš„?</strong></td></tr>'
+				   +'  <tr style="display:none"><td height="25">å¼€å§‹æ—¥æœŸ<input type="text" readonly style="width:80%" name="StartDate" id="StartDate">'
+                   +'  <span style="cursor:hand" onClick=OpenThenSetValue("Include/DateDialog.asp",160,170,window,document.all.StartDate);document.all.StartDate.focus();><img src="Images/date.gif" width="20" height="20" border="0" align="absmiddle" title="é€‰æ‹©æ—¥æœŸ"></span></td></tr>'
+				   +'  <tr style="display:none"><td height="25">ç»“æŸæ—¥æœŸ<input type="text" readonly style="width:80%" name="EndDate" id="EndDate">'
+                   +'  <span style="cursor:hand" onClick=OpenThenSetValue("Include/DateDialog.asp",160,170,window,document.all.EndDate);document.all.EndDate.focus();><img src="Images/date.gif" width="20" height="20" border="0" align="absmiddle" title="é€‰æ‹©æ—¥æœŸ"></span></td></tr>'
+                   +'  <tr><td height="40" align="center"><input type="submit" name="SearchButton" value="å¼€å§‹æœç´¢" onclick="return(SearchFormSubmit())"></td></tr>'
 				   +'</form>'
-				   +'  <tr><td><strong>Ê¹ÓÃËµÃ÷:</strong></td></tr>'
-				   +'  <tr><td> ¢Ù Äú¿ÉÒÔÀûÓÃ±¾ËÑË÷ÖúÀíÀ´ËÑË÷ÎÄÕÂ¡¢Í¼Æ¬¡¢ÏÂÔØFlash¡¢×¨Ìâ¡¢±êÇ©¡¢JSµÈ,µ«²»ÄÜËÑË÷£¨Ä¿Â¼£©ÖîÈçÆµµÀÃû³Æ¡¢À¸Ä¿Ãû³Æ£¬±êÇ©Ä¿Â¼µÈ</td></tr>'
-				   +'  <tr><td> ¢Ú °´ <font color=red>Ctrl+F</font> ¿ÉÒÔ¿ìËÙ½øĞĞ´ò¿ª»ò¹Ø±ÕËÑË÷Ğ¡ÖúÀí</td></tr>'
+				   +'  <tr><td><strong>ä½¿ç”¨è¯´æ˜:</strong></td></tr>'
+				   +'  <tr><td> â‘  æ‚¨å¯ä»¥åˆ©ç”¨æœ¬æœç´¢åŠ©ç†æ¥æœç´¢æ–‡ç« ã€å›¾ç‰‡ã€ä¸‹è½½Flashã€ä¸“é¢˜ã€æ ‡ç­¾ã€JSç­‰,ä½†ä¸èƒ½æœç´¢ï¼ˆç›®å½•ï¼‰è¯¸å¦‚é¢‘é“åç§°ã€æ ç›®åç§°ï¼Œæ ‡ç­¾ç›®å½•ç­‰</td></tr>'
+				   +'  <tr><td> â‘¡ æŒ‰ <font color=red>Ctrl+F</font> å¯ä»¥å¿«é€Ÿè¿›è¡Œæ‰“å¼€æˆ–å…³é—­æœç´¢å°åŠ©ç†</td></tr>'
                    +'</table>'
         var str=""
                +"<div id='SearchBox' "
@@ -78,7 +78,7 @@ var SearchBodyStr=''
                + "background-color:black;"
                + "filter:alpha(opacity=40);"
                + "'></div>";
-//¹Ø±Õ;
+//å…³é—­;
 function CloseSearchBox(el)
 {   if (el.id=='Close')
 	  { var twin = el.parentNode.parentNode;
@@ -98,7 +98,7 @@ if (!openTF)
  openTF=true;
  }
 }
-//³õÊ¼»¯;
+//åˆå§‹åŒ–;
 function initializeSearch(SearchArea)
 {
  initial();
@@ -113,7 +113,7 @@ if (document.all.SearchBox.style.display=='none')
 }
 function initialSearchAreaOption(SearchArea)
 {	 var EF=false;
-     var TextArr=new Array('ÎÄÕÂÖĞĞÄ','Í¼Æ¬ÖĞĞÄ','ÏÂÔØÖĞĞÄ','¶¯ÂşÖĞĞÄ','ÉÌ³ÇÖĞĞÄ','Ó°ÊÓÖĞĞÄ','¹©ÇóĞÅÏ¢','×¨ÌâÖĞĞÄ','ÓÑÇéÁ´½ÓÕ¾µã','ÏµÍ³º¯Êı±êÇ©','×Ô¶¨Òåº¯Êı±êÇ©','×Ô¶¨Òå¾²Ì¬±êÇ©','ÏµÍ³ JS','×ÔÓÉ JS','¹ÜÀíÔ±')
+     var TextArr=new Array('æ–‡ç« ä¸­å¿ƒ','å›¾ç‰‡ä¸­å¿ƒ','ä¸‹è½½ä¸­å¿ƒ','åŠ¨æ¼«ä¸­å¿ƒ','å•†åŸä¸­å¿ƒ','å½±è§†ä¸­å¿ƒ','ä¾›æ±‚ä¿¡æ¯','ä¸“é¢˜ä¸­å¿ƒ','å‹æƒ…é“¾æ¥ç«™ç‚¹','ç³»ç»Ÿå‡½æ•°æ ‡ç­¾','è‡ªå®šä¹‰å‡½æ•°æ ‡ç­¾','è‡ªå®šä¹‰é™æ€æ ‡ç­¾','ç³»ç»Ÿ JS','è‡ªç”± JS','ç®¡ç†å‘˜')
      var valueArr=new Array('Article','Picture','DownLoad','Flash','Shop','Movie','Supply','Special','Link','SysLabel','DIYFunctionLabel','FreeLabel','SysJS','FreeJS','Manager')
 	  for(var i=0;i<valueArr.length;++i)
 	   if (SearchArea==valueArr[i]) 
@@ -130,7 +130,7 @@ function initialSearchAreaOption(SearchArea)
 		    if (SearchArea==valueArr[i])
 	        document.all.SearchArea.options(i).selected=true;
 		} 
-	//½øĞĞÈ¨ÏŞ¼ì²é,¶ÔÃ»ÓĞÈ¨ÏŞµÄËÑË÷Ä£¿é,½øĞĞÆÁ±Î	
+	//è¿›è¡Œæƒé™æ£€æŸ¥,å¯¹æ²¡æœ‰æƒé™çš„æœç´¢æ¨¡å—,è¿›è¡Œå±è”½	
 	 var n=0;
 	for (var i=0;i<TextArr.length;++i)
 	   {   var removeTF=false;
@@ -180,7 +180,7 @@ function SetSearchTypeOption(AreaType)
   switch (AreaType)
   {
     case 'Article':
-	     if (SearchArticlePower=='False')          //ËÑË÷ÎÄÕÂÈ¨ÏŞ¼ì²é
+	     if (SearchArticlePower=='False')          //æœç´¢æ–‡ç« æƒé™æ£€æŸ¥
 		 {
 		  DisabledSearchFluctuation(true);
 		  return;
@@ -189,11 +189,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('ÎÄÕÂ(¸±)±êÌâ','ÎÄÕÂÄÚÈİ','ÎÄÕÂ¹Ø¼ü×Ö','ÎÄÕÂ×÷Õß','ÎÄÕÂÂ¼Èë')
+	      TextArr=new Array('æ–‡ç« (å‰¯)æ ‡é¢˜','æ–‡ç« å†…å®¹','æ–‡ç« å…³é”®å­—','æ–‡ç« ä½œè€…','æ–‡ç« å½•å…¥')
 	      }
 		  break;
     case 'Special':
-	     if (SearchSpecialPower=='False')        //ËÑË÷×¨ÌâÈ¨ÏŞ¼ì²é
+	     if (SearchSpecialPower=='False')        //æœç´¢ä¸“é¢˜æƒé™æ£€æŸ¥
 		 {
 		   DisabledSearchFluctuation(true);
 		   return;
@@ -202,11 +202,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('×¨ÌâÃû³Æ','¼òÒªËµÃ÷')
+	      TextArr=new Array('ä¸“é¢˜åç§°','ç®€è¦è¯´æ˜')
 	     }
 		 break;
     case 'Picture':
-	     if (SearchPicturePower=='False')          //ËÑË÷Í¼Æ¬È¨ÏŞ¼ì²é
+	     if (SearchPicturePower=='False')          //æœç´¢å›¾ç‰‡æƒé™æ£€æŸ¥
 		 {
 		  DisabledSearchFluctuation(true);
 		  return;
@@ -215,11 +215,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('Í¼Æ¬Ãû³Æ','Í¼Æ¬¼ò½é','Í¼Æ¬¹Ø¼ü×Ö','Í¼Æ¬×÷Õß','Í¼Æ¬Â¼Èë')
+	      TextArr=new Array('å›¾ç‰‡åç§°','å›¾ç‰‡ç®€ä»‹','å›¾ç‰‡å…³é”®å­—','å›¾ç‰‡ä½œè€…','å›¾ç‰‡å½•å…¥')
 	      }
 		  break;
     case 'DownLoad':
-	     if (SearchDownLoadPower=='False')          //ËÑË÷ÏÂÔØÈ¨ÏŞ¼ì²é
+	     if (SearchDownLoadPower=='False')          //æœç´¢ä¸‹è½½æƒé™æ£€æŸ¥
 		 {
 		  DisabledSearchFluctuation(true);
 		  return;
@@ -228,11 +228,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('ÏÂÔØÃû³Æ','ÏÂÔØ¼ò½é','ÏÂÔØ¹Ø¼ü×Ö','ÏÂÔØ×÷Õß/¿ª·¢ÉÌ','ÏÂÔØÂ¼Èë')
+	      TextArr=new Array('ä¸‹è½½åç§°','ä¸‹è½½ç®€ä»‹','ä¸‹è½½å…³é”®å­—','ä¸‹è½½ä½œè€…/å¼€å‘å•†','ä¸‹è½½å½•å…¥')
 	      }
 		  break; 
 	case 'Flash':
-	     if (SearchFlashPower=='False')          //ËÑË÷FlashÈ¨ÏŞ¼ì²é
+	     if (SearchFlashPower=='False')          //æœç´¢Flashæƒé™æ£€æŸ¥
 		 {
 		  DisabledSearchFluctuation(true);
 		  return;
@@ -241,11 +241,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('¶¯ÂşÃû³Æ','¶¯Âş¼ò½é','¶¯Âş¹Ø¼ü×Ö','¶¯Âş×÷Õß','¶¯ÂşÂ¼Èë')
+	      TextArr=new Array('åŠ¨æ¼«åç§°','åŠ¨æ¼«ç®€ä»‹','åŠ¨æ¼«å…³é”®å­—','åŠ¨æ¼«ä½œè€…','åŠ¨æ¼«å½•å…¥')
 	      }
 		  break; 
 	case 'Shop':
-	     if (SearchShopPower=='False')          //ËÑË÷ÉÌÆ·È¨ÏŞ¼ì²é
+	     if (SearchShopPower=='False')          //æœç´¢å•†å“æƒé™æ£€æŸ¥
 		 {
 		  DisabledSearchFluctuation(true);
 		  return;
@@ -254,11 +254,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('ÉÌÆ·Ãû³Æ','ÉÌÆ·½éÉÜ','ÉÌÆ·¹Ø¼ü×Ö','³§ÉÌ','¼Û¸ñ')
+	      TextArr=new Array('å•†å“åç§°','å•†å“ä»‹ç»','å•†å“å…³é”®å­—','å‚å•†','ä»·æ ¼')
 	      }
 		  break; 
     case 'Movie':
-	     if (SearchMoviePower=='False')          //ËÑË÷Ó°Æ¬È¨ÏŞ¼ì²é
+	     if (SearchMoviePower=='False')          //æœç´¢å½±ç‰‡æƒé™æ£€æŸ¥
 		 {
 		  DisabledSearchFluctuation(true);
 		  return;
@@ -267,11 +267,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('Ó°Æ¬Ãû³Æ','Ó°Æ¬½éÉÜ','Ó°Æ¬¹Ø¼ü×Ö','Ö÷ÒªÑİÔ±','Ìí¼ÓÕß')
+	      TextArr=new Array('å½±ç‰‡åç§°','å½±ç‰‡ä»‹ç»','å½±ç‰‡å…³é”®å­—','ä¸»è¦æ¼”å‘˜','æ·»åŠ è€…')
 	      }
 		  break;
 	case 'Supply':
-	     if (SearchSupplyPower=='False')          //ËÑË÷Ó°Æ¬È¨ÏŞ¼ì²é
+	     if (SearchSupplyPower=='False')          //æœç´¢å½±ç‰‡æƒé™æ£€æŸ¥
 		 {
 		  DisabledSearchFluctuation(true);
 		  return;
@@ -280,11 +280,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('ĞÅÏ¢Ö÷Ìâ','ĞÅÏ¢½éÉÜ','Ìí¼ÓÕß')
+	      TextArr=new Array('ä¿¡æ¯ä¸»é¢˜','ä¿¡æ¯ä»‹ç»','æ·»åŠ è€…')
 	      }
 		  break;
 	case 'Special':
-	     if (SearchSpecialPower=='False')       //ËÑË÷×¨ÌâÈ¨ÏŞ¼ì²é
+	     if (SearchSpecialPower=='False')       //æœç´¢ä¸“é¢˜æƒé™æ£€æŸ¥
 		 {
 		   DisabledSearchFluctuation(true);
 		   return;
@@ -293,11 +293,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('×¨ÌâÃû³Æ','¼òÒªËµÃ÷')
+	      TextArr=new Array('ä¸“é¢˜åç§°','ç®€è¦è¯´æ˜')
 	     }
 		 break;
 	case 'Link':
-	     if (SearchLinkPower=='False')       //ËÑË÷ÓÑÇéÁ´½ÓÕ¾µãÈ¨ÏŞ¼ì²é
+	     if (SearchLinkPower=='False')       //æœç´¢å‹æƒ…é“¾æ¥ç«™ç‚¹æƒé™æ£€æŸ¥
 		 {
 		   DisabledSearchFluctuation(true);
 		   return;
@@ -306,11 +306,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	      document.all.DateArea.style.display="";
-	      TextArr=new Array('Õ¾µãÃû³Æ','Õ¾µãÃèÊö')
+	      TextArr=new Array('ç«™ç‚¹åç§°','ç«™ç‚¹æè¿°')
 	     }
 		 break;
 	case 'SysLabel':
-	     if (SearchSysLabelPower=='False')       //ËÑË÷ÏµÍ³±êÇ©È¨ÏŞ¼ì²é
+	     if (SearchSysLabelPower=='False')       //æœç´¢ç³»ç»Ÿæ ‡ç­¾æƒé™æ£€æŸ¥
 		 {
 		   DisabledSearchFluctuation(true);
 		   return;
@@ -319,11 +319,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	     document.all.DateArea.style.display="";
-	     TextArr=new Array('ÏµÍ³±êÇ©Ãû³Æ','ÏµÍ³±êÇ©ÃèÊö')
+	     TextArr=new Array('ç³»ç»Ÿæ ‡ç­¾åç§°','ç³»ç»Ÿæ ‡ç­¾æè¿°')
 		 }
 	     break;
 	case 'DIYFunctionLabel':
-	     if (SearchDIYFunctionLabelPower=='False')       //ËÑË÷×Ô¶¨Òåº¯Êı±êÇ©È¨ÏŞ¼ì²é
+	     if (SearchDIYFunctionLabelPower=='False')       //æœç´¢è‡ªå®šä¹‰å‡½æ•°æ ‡ç­¾æƒé™æ£€æŸ¥
 		 {
 		   DisabledSearchFluctuation(true);
 		   return;
@@ -332,11 +332,11 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	     document.all.DateArea.style.display="";
-	     TextArr=new Array('×Ô¶¨Òåº¯Êı±êÇ©Ãû³Æ','×Ô¶¨Òåº¯Êı±êÇ©ÃèÊö')
+	     TextArr=new Array('è‡ªå®šä¹‰å‡½æ•°æ ‡ç­¾åç§°','è‡ªå®šä¹‰å‡½æ•°æ ‡ç­¾æè¿°')
 		 }
 	     break;
 	case 'FreeLabel':
-	     if (SearchFreeLabelPower=='False')       //ËÑË÷×Ô¶¨Òå¾²Ì¬±êÇ©È¨ÏŞ¼ì²é
+	     if (SearchFreeLabelPower=='False')       //æœç´¢è‡ªå®šä¹‰é™æ€æ ‡ç­¾æƒé™æ£€æŸ¥
 		 {
 		   DisabledSearchFluctuation(true);
 		   return;
@@ -344,11 +344,11 @@ function SetSearchTypeOption(AreaType)
 		 else
 		 {
 	     document.all.DateArea.style.display="";
-		 TextArr=new Array('×Ô¶¨Òå¾²Ì¬±êÇ©Ãû³Æ','×Ô¶¨Òå¾²Ì¬±êÇ©ÃèÊö','×Ô¶¨Òå¾²Ì¬±êÇ©ÄÚÈİ')
+		 TextArr=new Array('è‡ªå®šä¹‰é™æ€æ ‡ç­¾åç§°','è‡ªå®šä¹‰é™æ€æ ‡ç­¾æè¿°','è‡ªå®šä¹‰é™æ€æ ‡ç­¾å†…å®¹')
 		 }
 	     break;
 	case 'SysJS':
-	     if (SearchSysJSPower=='False')       //ËÑË÷ÏµÍ³JSÈ¨ÏŞ¼ì²é
+	     if (SearchSysJSPower=='False')       //æœç´¢ç³»ç»ŸJSæƒé™æ£€æŸ¥
 		 {
 		   DisabledSearchFluctuation(true);
 		   return;
@@ -356,11 +356,11 @@ function SetSearchTypeOption(AreaType)
 		 else
 		 {
 	     document.all.DateArea.style.display="";
-		 TextArr=new Array('ÏµÍ³JS Ãû³Æ','ÏµÍ³JS ÃèÊö','ÏµÍ³JS ÎÄ¼şÃû')
+		 TextArr=new Array('ç³»ç»ŸJS åç§°','ç³»ç»ŸJS æè¿°','ç³»ç»ŸJS æ–‡ä»¶å')
 		 }
 		 break;
     case 'FreeJS' :
-		 if (SearchFreeJSPower=='False')       //ËÑË÷×ÔÓÉJSÈ¨ÏŞ¼ì²é
+		 if (SearchFreeJSPower=='False')       //æœç´¢è‡ªç”±JSæƒé™æ£€æŸ¥
 		 {
 		   DisabledSearchFluctuation(true);
 		   return;
@@ -368,11 +368,11 @@ function SetSearchTypeOption(AreaType)
 		 else
 		 {
 	     document.all.DateArea.style.display="";
-		 TextArr=new Array('×ÔÓÉJS Ãû³Æ','×ÔÓÉJS ÃèÊö','×ÔÓÉJS ÎÄ¼şÃû')
+		 TextArr=new Array('è‡ªç”±JS åç§°','è‡ªç”±JS æè¿°','è‡ªç”±JS æ–‡ä»¶å')
 		 }
 		 break;
 	case 'Manager':	 
-		  if (SearchAdminPower=='False')          //ËÑË÷¹ÜÀíÔ±È¨ÏŞ¼ì²é
+		  if (SearchAdminPower=='False')          //æœç´¢ç®¡ç†å‘˜æƒé™æ£€æŸ¥
 		 {
 		  DisabledSearchFluctuation(true);
 		  return;
@@ -381,7 +381,7 @@ function SetSearchTypeOption(AreaType)
 		 {
 		  DisabledSearchFluctuation(false);
 	     document.all.DateArea.style.display="none";
-		 TextArr=new Array('¹ÜÀíÔ±Ãû³Æ','¹ÜÀíÔ±¼ò½é')
+		 TextArr=new Array('ç®¡ç†å‘˜åç§°','ç®¡ç†å‘˜ç®€ä»‹')
 		}
 	    break;
   }
@@ -415,7 +415,7 @@ function setstatus(Obj)
   { var form=document.forms[0];
     if (form.elements[0].value=='')
 	 {
-	   alert('ÇëÊäÈë¹Ø¼ü×Ö!')
+	   alert('è¯·è¾“å…¥å…³é”®å­—!')
 	   form.elements[0].focus();
 	   return false;
 	 }
@@ -423,70 +423,70 @@ function setstatus(Obj)
     {
 	  case 'Article':
 	       form.action="Admin_Article.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=ÎÄÕÂ¹ÜÀí >> <font color=red>ËÑË÷ÎÄÕÂ½á¹û</font>&ButtonSymbol=ArticleSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=æ–‡ç« ç®¡ç† >> <font color=red>æœç´¢æ–‡ç« ç»“æœ</font>&ButtonSymbol=ArticleSearch';
 		   break;
 	  case 'Picture':
 	       form.action="Admin_Picture.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=Í¼Æ¬¹ÜÀí >> <font color=red>ËÑË÷Í¼Æ¬½á¹û</font>&ButtonSymbol=PictureSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=å›¾ç‰‡ç®¡ç† >> <font color=red>æœç´¢å›¾ç‰‡ç»“æœ</font>&ButtonSymbol=PictureSearch';
 		   break;
 	  case 'DownLoad':
 	       form.action="Admin_Down.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=ÏÂÔØ¹ÜÀí >> <font color=red>ËÑË÷ÏÂÔØ½á¹û</font>&ButtonSymbol=DownSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=ä¸‹è½½ç®¡ç† >> <font color=red>æœç´¢ä¸‹è½½ç»“æœ</font>&ButtonSymbol=DownSearch';
 		   break;	
 	 case 'Flash':
 	       form.action="Admin_Flash.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=¶¯Âş¹ÜÀí >> <font color=red>ËÑË÷Flash½á¹û</font>&ButtonSymbol=FlashSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=åŠ¨æ¼«ç®¡ç† >> <font color=red>æœç´¢Flashç»“æœ</font>&ButtonSymbol=FlashSearch';
 		   break;
 	 case 'Shop':
 	       form.action="Admin_Shop.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=ÉÌ³Ç¹ÜÀí >> <font color=red>ËÑË÷ÉÌÆ·½á¹û</font>&ButtonSymbol=ProductSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=å•†åŸç®¡ç† >> <font color=red>æœç´¢å•†å“ç»“æœ</font>&ButtonSymbol=ProductSearch';
 		   break;
 	  case 'Movie':
 	       form.action="Admin_Movie.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=Ó°ÊÓ¹ÜÀí >> <font color=red>ËÑË÷Ó°Æ¬½á¹û</font>&ButtonSymbol=MovieSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=å½±è§†ç®¡ç† >> <font color=red>æœç´¢å½±ç‰‡ç»“æœ</font>&ButtonSymbol=MovieSearch';
 		   break;	
 	  case 'Supply':
 	       form.action="Admin_GQ.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=¹©Çó¹ÜÀí >> <font color=red>ËÑË÷ĞÅÏ¢½á¹û</font>&ButtonSymbol=Disabled';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=ä¾›æ±‚ç®¡ç† >> <font color=red>æœç´¢ä¿¡æ¯ç»“æœ</font>&ButtonSymbol=Disabled';
 		   break;
 	  case 'Special':
 	       form.action="Admin_Special.asp?ChannelID="+ChannelID;
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=×¨Ìâ¹ÜÀí >> <font color=red>ËÑË÷×¨Ìâ½á¹û</font>&ButtonSymbol=SpecialSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=ä¸“é¢˜ç®¡ç† >> <font color=red>æœç´¢ä¸“é¢˜ç»“æœ</font>&ButtonSymbol=SpecialSearch';
 		   break;
 	  case 'Link':
 	       form.action="Admin_FriendLink.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=³£¹æ¹ÜÀí >> ÓÑÇéÁ´½Ó¹ÜÀí >> <font color=red>ËÑË÷ÓÑÇéÁ´½ÓÕ¾µã½á¹û</font>&ButtonSymbol=LinkSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=å¸¸è§„ç®¡ç† >> å‹æƒ…é“¾æ¥ç®¡ç† >> <font color=red>æœç´¢å‹æƒ…é“¾æ¥ç«™ç‚¹ç»“æœ</font>&ButtonSymbol=LinkSearch';
 		   break;
 	  case 'SysLabel'  :
 	       form.action="Include/Label_Main.asp?LabelType=0";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=±êÇ©¹ÜÀí >> <font color=red>ËÑË÷ÏµÍ³º¯Êı±êÇ©½á¹û</font>&ButtonSymbol=SysLabelSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=æ ‡ç­¾ç®¡ç† >> <font color=red>æœç´¢ç³»ç»Ÿå‡½æ•°æ ‡ç­¾ç»“æœ</font>&ButtonSymbol=SysLabelSearch';
 		   break;
 	 case 'DIYFunctionLabel'  :
 	       form.action="Include/Label_Main.asp?LabelType=5";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=±êÇ©¹ÜÀí >> <font color=red>ËÑË÷×Ô¶¨Òåº¯Êı±êÇ©½á¹û</font>&ButtonSymbol=DIYFunctionSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=æ ‡ç­¾ç®¡ç† >> <font color=red>æœç´¢è‡ªå®šä¹‰å‡½æ•°æ ‡ç­¾ç»“æœ</font>&ButtonSymbol=DIYFunctionSearch';
 		   break;
 	  case 'FreeLabel'  :
 	       form.action="Include/Label_Main.asp?LabelType=1";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=±êÇ©¹ÜÀí >> <font color=red>ËÑË÷×ÔÓÉ±êÇ©½á¹û</font>&ButtonSymbol=FreeLabelSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=æ ‡ç­¾ç®¡ç† >> <font color=red>æœç´¢è‡ªç”±æ ‡ç­¾ç»“æœ</font>&ButtonSymbol=FreeLabelSearch';
 		   break;
 	  case 'SysJS'     :
 	  	   form.action="Include/JS_Main.asp?JSType=0";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=JS¹ÜÀí >> <font color=red>ËÑË÷ÏµÍ³JS½á¹û</font>&ButtonSymbol=SysJSSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=JSç®¡ç† >> <font color=red>æœç´¢ç³»ç»ŸJSç»“æœ</font>&ButtonSymbol=SysJSSearch';
 		   break;
 	  case 'FreeJS'     :
 	  	   form.action="Include/JS_Main.asp?JSType=1";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=JS¹ÜÀí >> <font color=red>ËÑË÷×ÔÓÉJS½á¹û</font>&ButtonSymbol=FreeJSSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=JSç®¡ç† >> <font color=red>æœç´¢è‡ªç”±JSç»“æœ</font>&ButtonSymbol=FreeJSSearch';
 		   break;
 	  case 'Manager'     :
 	  	   form.action="Admin_Admin.asp";
-		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=¹ÜÀíÔ±¹ÜÀí >> <font color=red>ËÑË÷¹ÜÀíÔ±½á¹û</font>&ButtonSymbol=ManagerSearch';
+		   parent.frames['BottomFrame'].location.href='Split.asp?OpStr=ç®¡ç†å‘˜ç®¡ç† >> <font color=red>æœç´¢ç®¡ç†å‘˜ç»“æœ</font>&ButtonSymbol=ManagerSearch';
 		   break;
 	}
 	form.submit();
   }
 function DisabledSearchFluctuation(Flag)
 { if (Flag==true)
-   document.all.KeyWord.value='¶Ô²»Æğ,È¨ÏŞ²»×ã!'; 
+   document.all.KeyWord.value='å¯¹ä¸èµ·,æƒé™ä¸è¶³!'; 
   var AllBtnArray=document.body.getElementsByTagName('INPUT'),CurrObj=null;
 	for (var i=0;i<AllBtnArray.length;i++)
 	{

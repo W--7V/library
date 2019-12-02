@@ -1,0 +1,55 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: #3A6592;
+  color: #fff;
+}
+#header .lft {
+  width: 20%;
+  height: 50%;
+  background-image: url(../../assets/imgs/back/title.gif);
+  background-repeat: no-repeat;
+  margin-left: 1px;
+}
+#header .mid {
+  flex-grow: 1;
+  margin-left: 10%;
+}
+#header a {
+  color: #fff;
+  text-decoration: none;
+}
+#header .rit {
+  margin-right: 1em;
+}
+
+.tips {
+  background-color: #BED2EB; 
+  color: #fff;
+  font-weight: bold;
+  padding: 5px 2em;
+}
+
+#body {
+  display: flex;
+  flex-grow: 1;
+  overflow: auto;
+}
+#body .menu {
+  width: 18%;
+  flex-shrink: 0;
+}
+#body .main {
+  flex-grow: 1;
+}
+
+

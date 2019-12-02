@@ -1,19 +1,19 @@
 var cal;
- var isFocus=false; //ÊÇ·ñÎª½¹µã
+ var isFocus=false; //æ˜¯å¦ä¸ºç„¦ç‚¹
  
- //Ñ¡ÔñÈÕÆÚ 
+ //é€‰æ‹©æ—¥æœŸ 
  function SelectDate(obj,strFormat)
   {
      var date = new Date();
-     var by = date.getFullYear()-50;  //×îĞ¡Öµ ¡ú 50 ÄêÇ°
-     var ey = date.getFullYear()+50;  //×î´óÖµ ¡ú 50 Äêºó
-     //cal = new Calendar(by, ey,1,strFormat);    //³õÊ¼»¯Ó¢ÎÄ°æ£¬0 ÎªÖĞÎÄ°æ
-     cal = (cal==null) ? new Calendar(by, ey, 1) : cal;    //²»ÓÃÃ¿´Î¶¼³õÊ¼»¯ 2006-12-03 ĞŞÕı
+     var by = date.getFullYear()-50;  //æœ€å°å€¼ â†’ 50 å¹´å‰
+     var ey = date.getFullYear()+50;  //æœ€å¤§å€¼ â†’ 50 å¹´å
+     //cal = new Calendar(by, ey,1,strFormat);    //åˆå§‹åŒ–è‹±æ–‡ç‰ˆï¼Œ0 ä¸ºä¸­æ–‡ç‰ˆ
+     cal = (cal==null) ? new Calendar(by, ey, 1) : cal;    //ä¸ç”¨æ¯æ¬¡éƒ½åˆå§‹åŒ– 2006-12-03 ä¿®æ­£
      cal.dateFormatStyle = strFormat;
      cal.show(obj);
  }
   /**//**
-  * ·µ»ØÈÕÆÚ
+  * è¿”å›æ—¥æœŸ
   * @param d the delimiter
   * @param p the pattern of your date
   */
@@ -32,9 +32,9 @@ var cal;
    if(isNaN(d)) d = 1;
    return new Date(y, m, d);
    */
-   var y = this.substring(style.indexOf('y'),style.lastIndexOf('y')+1);//Äê
-   var m = this.substring(style.indexOf('M'),style.lastIndexOf('M')+1);//ÔÂ
-   var d = this.substring(style.indexOf('d'),style.lastIndexOf('d')+1);//ÈÕ
+   var y = this.substring(style.indexOf('y'),style.lastIndexOf('y')+1);//å¹´
+   var m = this.substring(style.indexOf('M'),style.lastIndexOf('M')+1);//æœˆ
+   var d = this.substring(style.indexOf('d'),style.lastIndexOf('d')+1);//æ—¥
    if(isNaN(y)) y = new Date().getFullYear();
    if(isNaN(m)) m = new Date().getMonth();
    if(isNaN(d)) d = new Date().getDate();
@@ -44,7 +44,7 @@ var cal;
  }
  
   /**//**
-  * ¸ñÊ½»¯ÈÕÆÚ
+  * æ ¼å¼åŒ–æ—¥æœŸ
   * @param   d the delimiter
   * @param   p the pattern of your date
   * @author  meizz
@@ -56,7 +56,7 @@ var cal;
      "h+" : this.getHours(),     //hour
      "m+" : this.getMinutes(),   //minute
      "s+" : this.getSeconds(),   //second
-     "w+" : "ÌìÒ»¶şÈıËÄÎåÁù".charAt(this.getDay()),   //week
+     "w+" : "å¤©ä¸€äºŒä¸‰å››äº”å…­".charAt(this.getDay()),   //week
      "q+" : Math.floor((this.getMonth() + 3) / 3),  //quarter
      "S"  : this.getMilliseconds() //millisecond
    }
@@ -75,10 +75,10 @@ var cal;
  };
  
   /**//**
-  * ÈÕÀúÀà
+  * æ—¥å†ç±»
   * @param   beginYear 1990
   * @param   endYear   2010
-  * @param   lang      0(ÖĞÎÄ)|1(Ó¢Óï) ¿É×ÔÓÉÀ©³ä
+  * @param   lang      0(ä¸­æ–‡)|1(è‹±è¯­) å¯è‡ªç”±æ‰©å……
   * @param   dateFormatStyle  "yyyy-MM-dd";
   * @version 2006-04-01
   * @update
@@ -86,7 +86,7 @@ var cal;
   function Calendar(beginYear, endYear, lang, dateFormatStyle) {
    this.beginYear = 1990;
    this.endYear = 2010;
-   this.lang = 0;            //0(ÖĞÎÄ) | 1(Ó¢ÎÄ)
+   this.lang = 0;            //0(ä¸­æ–‡) | 1(è‹±æ–‡)
    this.dateFormatStyle = "yyyy-MM-dd";
  
     if (beginYear != null && endYear != null){
@@ -112,19 +112,19 @@ var cal;
  
  
     this.colors = {
-   "cur_word"      : "#FFFFFF",  //µ±ÈÕÈÕÆÚÎÄ×ÖÑÕÉ«
-   "cur_bg"        : "#00FF00",  //µ±ÈÕÈÕÆÚµ¥Ôª¸ñ±³Ó°É«
-   "sel_bg"        : "#FFCCCC",  //ÒÑ±»Ñ¡ÔñµÄÈÕÆÚµ¥Ôª¸ñ±³Ó°É« 
-   "sun_word"      : "#FF0000",  //ĞÇÆÚÌìÎÄ×ÖÑÕÉ«
-   "sat_word"      : "#0000FF",  //ĞÇÆÚÁùÎÄ×ÖÑÕÉ«
-   "td_word_light" : "#333333",  //µ¥Ôª¸ñÎÄ×ÖÑÕÉ«
-   "td_word_dark"  : "#CCCCCC",  //µ¥Ôª¸ñÎÄ×Ö°µÉ«
-   "td_bg_out"     : "#EFEFEF",  //µ¥Ôª¸ñ±³Ó°É«
-   "td_bg_over"    : "#FFCC00",  //µ¥Ôª¸ñ±³Ó°É«
-   "tr_word"       : "#FFFFFF",  //ÈÕÀúÍ·ÎÄ×ÖÑÕÉ«
-   "tr_bg"         : "#666666",  //ÈÕÀúÍ·±³Ó°É«
-   "input_border"  : "#CCCCCC",  //input¿Ø¼şµÄ±ß¿òÑÕÉ«
-   "input_bg"      : "#EFEFEF"   //input¿Ø¼şµÄ±³Ó°É«
+   "cur_word"      : "#FFFFFF",  //å½“æ—¥æ—¥æœŸæ–‡å­—é¢œè‰²
+   "cur_bg"        : "#00FF00",  //å½“æ—¥æ—¥æœŸå•å…ƒæ ¼èƒŒå½±è‰²
+   "sel_bg"        : "#FFCCCC",  //å·²è¢«é€‰æ‹©çš„æ—¥æœŸå•å…ƒæ ¼èƒŒå½±è‰² 
+   "sun_word"      : "#FF0000",  //æ˜ŸæœŸå¤©æ–‡å­—é¢œè‰²
+   "sat_word"      : "#0000FF",  //æ˜ŸæœŸå…­æ–‡å­—é¢œè‰²
+   "td_word_light" : "#333333",  //å•å…ƒæ ¼æ–‡å­—é¢œè‰²
+   "td_word_dark"  : "#CCCCCC",  //å•å…ƒæ ¼æ–‡å­—æš—è‰²
+   "td_bg_out"     : "#EFEFEF",  //å•å…ƒæ ¼èƒŒå½±è‰²
+   "td_bg_over"    : "#FFCC00",  //å•å…ƒæ ¼èƒŒå½±è‰²
+   "tr_word"       : "#FFFFFF",  //æ—¥å†å¤´æ–‡å­—é¢œè‰²
+   "tr_bg"         : "#666666",  //æ—¥å†å¤´èƒŒå½±è‰²
+   "input_border"  : "#CCCCCC",  //inputæ§ä»¶çš„è¾¹æ¡†é¢œè‰²
+   "input_bg"      : "#EFEFEF"   //inputæ§ä»¶çš„èƒŒå½±è‰²
    }
  
    this.draw();
@@ -135,19 +135,19 @@ var cal;
  }
  
   /**//**
-  * ÈÕÀúÀàÊôĞÔ£¨ÓïÑÔ°ü£¬¿É×ÔÓÉÀ©Õ¹£©
+  * æ—¥å†ç±»å±æ€§ï¼ˆè¯­è¨€åŒ…ï¼Œå¯è‡ªç”±æ‰©å±•ï¼‰
   */
   Calendar.language = {
    "year"   : [[""], [""]],
    "months" : [["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
-         ["Ò»ÔÂ","¶şÔÂ","ÈıÔÂ","ËÄÔÂ","ÎåÔÂ","ÁùÔÂ","ÆßÔÂ","°ËÔÂ","¾ÅÔÂ","Ê®ÔÂ","Ê®Ò»ÔÂ","Ê®¶şÔÂ"]
+         ["ä¸€æœˆ","äºŒæœˆ","ä¸‰æœˆ","å››æœˆ","äº”æœˆ","å…­æœˆ","ä¸ƒæœˆ","å…«æœˆ","ä¹æœˆ","åæœˆ","åä¸€æœˆ","åäºŒæœˆ"]
           ],
    "weeks"  : [["SUN","MON","TUR","WED","THU","FRI","SAT"],
-         ["ÈÕ","Ò»","¶ş","Èı","ËÄ","Îå","Áù"]
+         ["æ—¥","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­"]
           ],
-   "clear"  : [["CLS"], ["Çå¿Õ"]],
-   "today"  : [["TODAY"], ["½ñÌì"]],
-   "close"  : [["CLOSE"], ["¹Ø±Õ"]]
+   "clear"  : [["CLS"], ["æ¸…ç©º"]],
+   "today"  : [["TODAY"], ["ä»Šå¤©"]],
+   "close"  : [["CLOSE"], ["å…³é—­"]]
  }
  
   Calendar.prototype.draw = function() {
@@ -266,7 +266,7 @@ var cal;
  */
  }
  
- //Äê·İÏÂÀ­¿ò°ó¶¨Êı¾İ
+ //å¹´ä»½ä¸‹æ‹‰æ¡†ç»‘å®šæ•°æ®
   Calendar.prototype.bindYear = function() {
    //var cy = this.form.calendarYear;
    var cy = this.calendarYear;
@@ -276,7 +276,7 @@ var cal;
    }
  }
  
- //ÔÂ·İÏÂÀ­¿ò°ó¶¨Êı¾İ
+ //æœˆä»½ä¸‹æ‹‰æ¡†ç»‘å®šæ•°æ®
   Calendar.prototype.bindMonth = function() {
    //var cm = this.form.calendarMonth;
    var cm = this.calendarMonth;
@@ -286,7 +286,7 @@ var cal;
    }
  }
  
- //ÏòÇ°Ò»ÔÂ
+ //å‘å‰ä¸€æœˆ
   Calendar.prototype.goPrevMonth = function(e){
     if (this.year == this.beginYear && this.month == 0){return;}
    this.month--;
@@ -299,7 +299,7 @@ var cal;
    this.bindData();
  }
  
- //ÏòºóÒ»ÔÂ
+ //å‘åä¸€æœˆ
   Calendar.prototype.goNextMonth = function(e){
     if (this.year == this.endYear && this.month == 11){return;}
    this.month++;
@@ -312,7 +312,7 @@ var cal;
    this.bindData();
  }
  
- //¸Ä±äSELECTÑ¡ÖĞ×´Ì¬
+ //æ”¹å˜SELECTé€‰ä¸­çŠ¶æ€
   Calendar.prototype.changeSelect = function() {
    //var cy = this.form.calendarYear;
    //var cm = this.form.calendarMonth;
@@ -332,7 +332,7 @@ var cal;
    }
  }
  
- //¸üĞÂÄê¡¢ÔÂ
+ //æ›´æ–°å¹´ã€æœˆ
   Calendar.prototype.update = function (e){
    //this.year  = e.form.calendarYear.options[e.form.calendarYear.selectedIndex].value;
    //this.month = e.form.calendarMonth.options[e.form.calendarMonth.selectedIndex].value;
@@ -343,7 +343,7 @@ var cal;
    this.bindData();
  }
  
- //°ó¶¨Êı¾İµ½ÔÂÊÓÍ¼
+ //ç»‘å®šæ•°æ®åˆ°æœˆè§†å›¾
   Calendar.prototype.bindData = function () {
    var calendar = this;
    var dateArray = this.getMonthViewArray(this.date.getYear(), this.date.getMonth());
@@ -383,10 +383,10 @@ var cal;
           tds[i].onmouseout = function () {
            this.style.backgroundColor = calendar.colors["cur_bg"];
          }
-         //continue; //Èô²»Ïëµ±Ììµ¥Ôª¸ñµÄ±³¾°±»ÏÂÃæµÄ¸²¸Ç£¬ÇëÈ¡Ïû×¢ÊÍ
+         //continue; //è‹¥ä¸æƒ³å½“å¤©å•å…ƒæ ¼çš„èƒŒæ™¯è¢«ä¸‹é¢çš„è¦†ç›–ï¼Œè¯·å–æ¶ˆæ³¨é‡Š
        }//end if
        
-       //ÉèÖÃÒÑ±»Ñ¡ÔñµÄÈÕÆÚµ¥Ôª¸ñ±³Ó°É« 
+       //è®¾ç½®å·²è¢«é€‰æ‹©çš„æ—¥æœŸå•å…ƒæ ¼èƒŒå½±è‰² 
        if (calendar.dateControl != null && calendar.dateControl.value == new Date(calendar.date.getFullYear(),
                     calendar.date.getMonth(),
                      dateArray[i]).format(calendar.dateFormatStyle)) {
@@ -402,7 +402,7 @@ var cal;
    }
  }
  
- //¸ù¾İÄê¡¢ÔÂµÃµ½ÔÂÊÓÍ¼Êı¾İ(Êı×éĞÎÊ½)
+ //æ ¹æ®å¹´ã€æœˆå¾—åˆ°æœˆè§†å›¾æ•°æ®(æ•°ç»„å½¢å¼)
   Calendar.prototype.getMonthViewArray = function (y, m) {
    var mvArray = [];
    var dayOfFirstDay = new Date(y, m, 1).getDay();
@@ -416,7 +416,7 @@ var cal;
    return mvArray;
  }
  
- //À©Õ¹ document.getElementById(id) ¶àä¯ÀÀÆ÷¼æÈİĞÔ from meizz tree source
+ //æ‰©å±• document.getElementById(id) å¤šæµè§ˆå™¨å…¼å®¹æ€§ from meizz tree source
   Calendar.prototype.getElementById = function(id){
    if (typeof(id) != "string" || id == "") return null;
    if (document.getElementById) return document.getElementById(id);
@@ -424,13 +424,13 @@ var cal;
     try {return eval(id);} catch(e){ return null;}
  }
  
- //À©Õ¹ object.getElementsByTagName(tagName)
+ //æ‰©å±• object.getElementsByTagName(tagName)
   Calendar.prototype.getElementsByTagName = function(object, tagName){
    if (document.getElementsByTagName) return document.getElementsByTagName(tagName);
    if (document.all) return document.all.tags(tagName);
  }
  
- //È¡µÃHTML¿Ø¼ş¾ø¶ÔÎ»ÖÃ
+ //å–å¾—HTMLæ§ä»¶ç»å¯¹ä½ç½®
   Calendar.prototype.getAbsPoint = function (e){
    var x = e.offsetLeft;
    var y = e.offsetTop;
@@ -441,7 +441,7 @@ var cal;
     return {"x": x, "y": y};
  }
  
- //ÏÔÊ¾ÈÕÀú
+ //æ˜¾ç¤ºæ—¥å†
   Calendar.prototype.show = function (dateObj, popControl) {
     if (dateObj == null){
      throw new Error("arguments[0] is necessary")
@@ -450,8 +450,8 @@ var cal;
    
    //if (dateObj.value.length > 0){
    //this.date = new Date(dateObj.value.toDate());
-   //this.date = new Date(dateObj.value.toDate(this.dateFormatStyle));//´øÈëÓÃ»§Ö¸¶¨µÄ style  
-   this.date = (dateObj.value.length > 0) ? new Date(dateObj.value.toDate(this.dateFormatStyle)) : new Date() ;// ÈôÎª¿ÕÔòÏÔÊ¾µ±Ç°ÔÂ·İ
+   //this.date = new Date(dateObj.value.toDate(this.dateFormatStyle));//å¸¦å…¥ç”¨æˆ·æŒ‡å®šçš„ style  
+   this.date = (dateObj.value.length > 0) ? new Date(dateObj.value.toDate(this.dateFormatStyle)) : new Date() ;// è‹¥ä¸ºç©ºåˆ™æ˜¾ç¤ºå½“å‰æœˆä»½
    this.year = this.date.getFullYear();
    this.month = this.date.getMonth();
    this.changeSelect();
@@ -464,7 +464,7 @@ var cal;
    this.panel.style.left = xy.x -25 + "px";
    this.panel.style.top = (xy.y + dateObj.offsetHeight) + "px";
    
-   // °Ñ visibility ±äÎª display£¬²¢Ìí¼ÓÊ§È¥½¹µãµÄÊÂ¼ş
+   // æŠŠ visibility å˜ä¸º displayï¼Œå¹¶æ·»åŠ å¤±å»ç„¦ç‚¹çš„äº‹ä»¶
    //this.setDisplayStyle("select", "hidden");
    //this.panel.style.visibility = "visible";
    //this.container.style.visibility = "visible";
@@ -476,7 +476,7 @@ var cal;
     this.container.onmouseout = function(){isFocus=false;}
  }
  
- //Òş²ØÈÕÀú
+ //éšè—æ—¥å†
   Calendar.prototype.hide = function() {
    //this.setDisplayStyle("select", "visible");
    //this.panel.style.visibility = "hidden";
@@ -486,14 +486,14 @@ var cal;
    isFocus=false;
  }
  
- //½¹µã×ªÒÆÊ±Òş²ØÈÕÀú
+ //ç„¦ç‚¹è½¬ç§»æ—¶éšè—æ—¥å†
   Calendar.prototype.onblur = function() {
       if(!isFocus){this.hide();}
  }
  
 
   /**//*
- //ÉèÖÃ¿Ø¼şÏÔÊ¾»òÒş²Ø
+ //è®¾ç½®æ§ä»¶æ˜¾ç¤ºæˆ–éšè—
  Calendar.prototype.setDisplayStyle = function(tagName, style) {
    var tags = this.getElementsByTagName(null, tagName)
    for(var i = 0; i < tags.length; i++) {
@@ -519,5 +519,5 @@ var cal;
  }
  document.write('</div>');
  //var calendar = new Calendar();  
- //µ÷ÓÃcalendar.show(dateControl, popControl);
+ //è°ƒç”¨calendar.show(dateControl, popControl);
 

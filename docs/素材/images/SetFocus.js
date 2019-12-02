@@ -1,5 +1,5 @@
  /*
- ×÷ÓÃ:Ê¹MainFrameÊ¼ÖÕ»ñµÃ½¹µã
+ ä½œç”¨:ä½¿MainFrameå§‹ç»ˆè·å¾—ç„¦ç‚¹
  */
  document.onkeydown=keyDown;
  function keyDown()
@@ -15,7 +15,7 @@
   }
  }
 
-//Êó±êÓÒ¼ü¾ø¶Ô½ûÖ¹·¨
+//é¼ æ ‡å³é”®ç»å¯¹ç¦æ­¢æ³•
 if (window.Event) 
 document.captureEvents(Event.MOUSEUP); 
 function nocontextmenu() 
