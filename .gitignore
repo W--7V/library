@@ -1,2 +1,4 @@
 /target/
-/.seetings/
+/.setings/
+/.classpath
+/.project
