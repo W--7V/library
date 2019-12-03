@@ -1,0 +1,165 @@
+
+<style>
+  .v_menu {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0; 
+    margin: 5px 0; 
+    background-color: #D2E4FC;
+  }
+  .v_menu .item {
+    cursor: pointer;
+  }
+  .v_menu .item::after {
+    content: "|";
+    padding: 0 0.2em;
+  }
+  .v_menu .item:last-child::after {
+    display: none;
+  }
+  
+  .v_login {
+    display: none; 
+    width: 500px;
+    height: 220px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding-top: 40px; 
+    position: fixed;
+    z-index: 100;
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    margin: auto;
+  }
+  .v_login .head {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .v_login .line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em; 
+  }
+  .v_login .label {
+    width: 20%;
+    text-align: right;
+    margin-right: 16px;
+  }
+</style>
+
+<!-- 菜单 -->
+<section class="v_menu"> 
+  <div class="item" onclick="v_menuObj.toHome()"> 首页 </div>
+  <div class="item"> 网站介绍 </div>
+  <div class="item"> 最新电子书 </div>
+  <div class="item"> 热门电子书 </div>
+  <div class="item"> 在线留言 </div>
+  <div class="item" id="$member_login" >  
+    <span onclick="v_menuObj.showLogin('0')">会员登录</span>
+  </div>
+  <div class="item" onclick="v_menuObj.showLogin('1')"> 管理登录 </div>
+</section>
+<!-- 登录窗 -->
+<section id="$login" class="v_login">
+  <h1 id="$head" class="head"> </h1>
+  <div class="line name"> 
+    <span class="label">用户名:</span>
+    <input id="$name" class="style1 value" type="text" placeholder="请输入用户名">
+  </div>
+  <div class="line pwd"> 
+    <span class="label">密码:</span>
+    <input id="$pwd" class="style1 value" type="password" placeholder="请输入密码">
+  </div>
+  <div class="line btns">
+    <button type="button" class="style1" onclick="v_menuObj.loginCancel()">取消</button>
+    <button type="button" class="style1" onclick="v_menuObj.loginSubmit()">登录</button>
+  </div>
+</section>
+
+<script type="text/javascript">
+  window.v_menuObj = {
+    toHome(){ location.href = '/pages/home' },
+    
+    loginType: '0',
+    showLogin(flg){
+      this.loginType = flg; 
+      
+      $_utils.showMask(true);
+      $login.style.display = 'block';
+      
+      $head.textContent = this.loginType==='0'?'会员登录':'管理登录'
+    },
+    
+    loginSubmit(){
+      if (!/^.{4,8}$/.test($name.value)) {
+        return alert('请输入4到8位的账号名');
+      }
+      if (!/^.{4,8}$/.test($pwd.value)) {
+        return alert('请输入4到8位密码');
+      }
+      
+      let url = '/api/login0';
+      let pageUrl = '/pages/home/index.html'
+      if (this.loginType==='1') { 
+        url = '/api/login1' 
+        pageUrl = '/pages/backHome'
+      }
+      $_utils.http('post',url,{
+        name: $name.value,
+        pwd: $pwd.value, 
+      })
+      .then(ret=>{
+        alert('登录成功!');
+        
+        
+        localStorage._user_info = JSON.stringify({
+          name: ret.key1
+        })
+        
+        location.href = pageUrl; 
+      })
+      .catch(err=>{ 
+        alert('登录失败: ' + err);
+        console.warn(err);
+      });
+    },
+    loginCancel(){
+      $_utils.showMask(false);
+      $login.style.display = 'none';
+    },
+    
+    // 获取当前用户信息 
+    getUserInfo(){
+      $_utils.http('get','/api/userInfo',null,{},/html/.test(location.pathname))
+      .then(ret=>{
+        $member_login.innerHTML = `
+        ${ret.key1}, 你好!
+        <a href="javascript:;" onclick="v_menuObj.logout()">退出</a>
+        `
+      })
+      .catch(err=>{ 
+        // 未登录 
+        console.warn(err);
+      });
+    },
+    logout(){
+      console.log('登出');
+      $_utils.http('get','/api/logout',null,{},true)
+      .then(ret=>{
+        location.href = '/pages/home'
+      })
+      .catch(err=>{ 
+        console.warn(err);
+      });
+    },
+    
+    init(){
+      this.getUserInfo(); 
+    },
+  }
+  v_menuObj.init(); 
+</script>
+

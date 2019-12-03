@@ -1,5 +1,8 @@
 
-let page = {
+
+
+
+let pageObj = {
   
   render(){
     // 小说列表  
@@ -23,7 +26,9 @@ let page = {
 }
 
 window.addEventListener("load",function(evt){
-  page.init(); 
+  header.renderView('../../template/header_back.htm')
+  
+  pageObj.init(); 
 })
 
 

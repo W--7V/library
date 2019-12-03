@@ -4,7 +4,15 @@
   margin: 0; 
   padding: 0; 
 }
-
+input.style1 {
+  padding: 6px 8px;
+  width: 200px;
+} 
+button.style1 {
+  padding: 6px 8px;
+  width: 80px;
+  margin: 0 10px;
+} 
 
 body {
   width: 900px;
@@ -12,6 +20,15 @@ body {
 }
 
 
-
+#mask {
+  background-color: #000;
+  opacity: 0.5;
+  position: fixed;
+  z-index: 1;
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+}
 
 

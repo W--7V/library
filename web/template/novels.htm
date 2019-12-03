@@ -1,0 +1,95 @@
+<style>
+  .v_novels { }
+  .v_novels .head { 
+    background-color: #D2E4FC;
+    padding: 5px 1em;
+  }
+  .v_novels .wrap { 
+    display: flex; 
+    flex-wrap: wrap;
+  }
+  .v_novels .itemWp { 
+    box-sizing: border-box;
+    padding: 1.2% 1%;
+    width: 25%;
+    height: 220px;
+    cursor: pointer;
+  }
+  .v_novels .item { 
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
+<section class="v_novels">
+  <div class="head"> 最新电子书 </div>
+  <div class="wrap">       
+    <!-- <div class="item"> </div> -->
+  </div>
+</section>
+
+<script type="text/javascript">
+  window.v_novels = {
+    novelList: [
+      {
+        name: '',
+        img: '../../assets/imgs/novel.jpg',
+      },
+      {
+        name: '',
+        img: '../../assets/imgs/novel.jpg',
+      },
+      {
+        name: '',
+        img: '../../assets/imgs/novel.jpg',
+      },
+      {
+        name: '',
+        img: '../../assets/imgs/novel.jpg',
+      },
+      {
+        name: '',
+        img: '../../assets/imgs/novel.jpg',
+      },
+      {
+        name: '',
+        img: '../../assets/imgs/novel.jpg',
+      },
+      {
+        name: '',
+        img: '../../assets/imgs/novel.jpg',
+      },
+      {
+        name: '',
+        img: '../../assets/imgs/novel.jpg',
+      },
+    ],
+    
+    render(){
+      // 小说列表  
+      let fragment = document.createDocumentFragment()
+      this.novelList.forEach(itm=>{
+        let wrap = document.createElement("div")
+        let div = document.createElement("div")
+        wrap.appendChild(div);
+        wrap.setAttribute("class","itemWp")
+        div.setAttribute("class","item")
+        div.style.backgroundImage = `url(${itm.img})`
+        div.addEventListener("click",function(evt){
+          location.href = '/pages/novel/chapter.html'
+        })
+        fragment.appendChild(wrap)
+      })
+      document.querySelector(".v_novels").querySelector(".wrap").appendChild(fragment)
+      
+    },
+    init(){
+      this.render(); 
+      
+    },
+  }
+
+  v_novels.init(); 
+</script>
