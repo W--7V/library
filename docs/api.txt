@@ -1,0 +1,21 @@
+
+http://bnszmu.natappfree.cc
+
+
+登录 
+POST: /login 
+{
+  "loginName":"admin",
+  "password":"123456"
+}
+
+
+获取用户信息 
+POST: /getUserInfo 
+
+登出 
+POST: /logout 
+ 
+
+
+

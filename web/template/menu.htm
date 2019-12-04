@@ -56,7 +56,7 @@
   <div class="item"> 网站介绍 </div>
   <div class="item"> 最新电子书 </div>
   <div class="item"> 热门电子书 </div>
-  <div class="item"> 在线留言 </div>
+  <div class="item" > 在线留言 </div>
   <div class="item" id="$member_login" >  
     <span onclick="v_menuObj.showLogin('0')">会员登录</span>
   </div>
@@ -95,36 +95,35 @@
     
     loginSubmit(){
       if (!/^.{4,8}$/.test($name.value)) {
-        return alert('请输入4到8位的账号名');
+        return $_utils.showAlert('请输入4到8位的账号名');
       }
       if (!/^.{4,8}$/.test($pwd.value)) {
-        return alert('请输入4到8位密码');
+        return $_utils.showAlert('请输入4到8位密码');
       }
       
-      let url = '/api/login0';
-      let pageUrl = '/pages/home/index.html'
+      let url = '/login';
+      let pageUrl = '/pages/home'
       if (this.loginType==='1') { 
-        url = '/api/login1' 
+        url = '/login1' 
         pageUrl = '/pages/backHome'
       }
       $_utils.http('post',url,{
-        name: $name.value,
-        pwd: $pwd.value, 
+        loginName: $name.value,
+        password: $pwd.value, 
       })
       .then(ret=>{
-        alert('登录成功!');
+        $_utils.showAlert('登录成功!')
+        // .then(ret=>{ location.href = pageUrl; })
         
-        
-        localStorage._user_info = JSON.stringify({
-          name: ret.key1
-        })
-        
-        location.href = pageUrl; 
+        this.getUserInfo(); 
       })
       .catch(err=>{ 
-        alert('登录失败: ' + err);
+        $_utils.showAlert('登录失败: ' + err);
         console.warn(err);
-      });
+      })
+      .finally(()=>{
+        $login.style.display = 'none';
+      })
     },
     loginCancel(){
       $_utils.showMask(false);
@@ -132,24 +131,34 @@
     },
     
     // 获取当前用户信息 
-    getUserInfo(){
-      $_utils.http('get','/api/userInfo',null,{},/html/.test(location.pathname))
+    getUserInfo(){ 
+      $_utils.http('post','/getUserInfo',null,false)
       .then(ret=>{
+        localStorage._user_info = JSON.stringify(ret);
+        
         $member_login.innerHTML = `
-        ${ret.key1}, 你好!
-        <a href="javascript:;" onclick="v_menuObj.logout()">退出</a>
-        `
+          ${ret.realName}, 你好!
+          <a href="javascript:;" onclick="v_menuObj.logout()">退出</a> `
       })
       .catch(err=>{ 
-        // 未登录 
-        console.warn(err);
+        localStorage._user_info = JSON.stringify({});
+        $member_login.innerHTML = ` <span onclick="v_menuObj.showLogin('0')">会员登录</span> `
+        
+        console.warn('未登录',err);
       });
     },
     logout(){
-      console.log('登出');
-      $_utils.http('get','/api/logout',null,{},true)
+      let bol = confirm('确定退出吗?')
+      if (!bol) { return ; }
+      
+      $_utils.http('post','/logout',null)
       .then(ret=>{
-        location.href = '/pages/home'
+        
+        $_utils.showAlert('退出成功!')
+        
+        this.getUserInfo();
+        
+        // location.href = '/pages/home'
       })
       .catch(err=>{ 
         console.warn(err);

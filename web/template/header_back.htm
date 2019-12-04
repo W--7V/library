@@ -31,15 +31,43 @@
 <section class="v_header_back"> 
   <div class="lft"> </div>
   <div class="mid"> 
-    <div class=""> 19年12月1日 星期天 </div>
-    <div class=""> xx </div>
+    <div class="time"> 19年12月1日 星期天 </div>
+    <div class="user"> xx </div>
   </div>
   <div class="rit"> 
     [<a href="/pages/home">网站首页</a>]
-    [<a href="javascript:;">安全退出</a>]
+    [<a href="javascript:;" onclick="v_header_back.logout()">安全退出</a>]
   </div>
 </section>
 
 <script type="text/javascript">
+  window.v_header_back = {
+    logout(){
+      let bol = confirm('确定退出吗?')
+      if (bol) {
+        // $_utils.http('get','/api/xxx')
+        location.href = '/pages/backHome/'
+      }
+    },
+    
+    init(){
+      // return ;
+      
+      let date = new Date();
+      document.querySelector(".v_header_back .time").innerHTML = `
+        ${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日 
+        星期${date.getDay()}
+      `
+      
+      
+      
+      $_utils.http('get','/api/userInfo')
+      .then(ret=>{
+        document.querySelector(".v_header_back .user").innerHTML = ` 欢迎! ${ret.key1} `
+      })
+      
+    },
+  }
   
+  v_header_back.init(); 
 </script>

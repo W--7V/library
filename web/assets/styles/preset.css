@@ -19,6 +19,31 @@ body {
   margin: 0 auto;
 }
 
+#alert {
+  position: fixed;
+  z-index: 9999;
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  margin: auto;
+  width: 400px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+#alert .msg {
+  margin-top: 10px;
+}
+#alert button {
+  padding: 3px 11px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
 
 #mask {
   background-color: #000;
