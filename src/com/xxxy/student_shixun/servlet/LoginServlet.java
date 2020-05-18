@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		User user = (User) DataResolveUtil.resolveInputData(req, User.class);
+		User user = DataResolveUtil.resolveInputData(req, User.class);
 		ResultMsg msg = userService.login(user, req);
 		DataResolveUtil.resolveOutputData(resp, msg);
 	}

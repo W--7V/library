@@ -23,9 +23,10 @@ public class UserService {
 		try {
 			DruidPooledConnection connection = druidDataSource.getConnection();
 			PreparedStatement prepareStatement = connection
-					.prepareStatement("select * from user u where u.loginname = ? and u.password = ?");
+					.prepareStatement("select * from user u where u.loginname = ? and u.password = ? and u.type = ?");
 			prepareStatement.setString(1, user.getLoginName());
 			prepareStatement.setString(2, user.getPassword());
+			prepareStatement.setString(3, user.getType());
 			ResultSet executeQuery = prepareStatement.executeQuery();
 			if (executeQuery.first()) {
 				msg.success();

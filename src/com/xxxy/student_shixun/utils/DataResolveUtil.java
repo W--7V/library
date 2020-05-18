@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 
 public class DataResolveUtil {
 
-	public static Object resolveInputData(HttpServletRequest req, Class<?> clazz) {
+	public static<T> T resolveInputData(HttpServletRequest req, Class<T> clazz) {
 		BufferedReader bufferedReader;
 		try {
 			bufferedReader = new BufferedReader(new InputStreamReader(req.getInputStream()));
